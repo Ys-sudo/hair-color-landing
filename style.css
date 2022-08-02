@@ -1,104 +1,358 @@
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
 
-/******************************************************
- * Stylesheet by Jason Mayes 2020.
- *
- * Got questions? Reach out to me on social:
- * Twitter: @jason_mayes
- * LinkedIn: https://www.linkedin.com/in/creativetech
- *****************************************************/
-
-body {
-  font-family: helvetica, arial, sans-serif;
-  margin: 2em;
-  color: #3D3D3D;
+:root {
+  --color-bg: white;
+  --color-text-main: #000000;
+  --color-primary: #FFFF00;
+  --wrapper-height: 87vh;
+  --image-max-width: 300px;
+  --image-margin: 3rem;
+  --font-family: "HK Grotesk";
+  --font-family-header: "HK Grotesk";
 }
 
-h1 {
-  font-style: italic;
-  color: #FF6F00;
+/* Basic page style resets */
+* {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
 }
 
-h2 {
-  clear: both;
-}
-
-em {
-  font-weight: bold;
-}
-
-video {
-  clear: both;
-  display: block;
-}
-
-section {
-  opacity: 1;
-  transition: opacity 500ms ease-in-out;
-}
-
-header, footer {
-  clear: both;
-}
-
-.removed {
-  display: none;
-}
-
-.invisible {
-  opacity: 0.2;
-}
-
-.note {
-  font-style: italic;
-  font-size: 130%;
-}
-
-.videoView, .classifyOnClick {
-  position: relative;
-  float: left;
-  width: 48%;
-  margin: 2% 1%;
+button {
   cursor: pointer;
 }
 
-.videoView p, .classifyOnClick p {
-  position: absolute;
-  padding: 5px;
-  background-color: rgba(255, 111, 0, 0.85);
-  color: #FFF;
-  border: 1px dashed rgba(255, 255, 255, 0.7);
-  z-index: 2;
-  font-size: 12px;
-  margin: 0;
+/* Import fonts */
+@font-face {
+  font-family: HK Grotesk;
+  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
+    format("opentype");
+}
+@font-face {
+  font-family: HK Grotesk;
+  font-weight: bold;
+  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
+    format("opentype");
 }
 
-.highlighter {
-  background: rgba(0, 255, 0, 0.25);
-  border: 1px dashed #fff;
-  z-index: 1;
-  position: absolute;
-}
 
-.classifyOnClick {
-  z-index: 0;
+.title{
+  margin: .5em;
+  font-size: 4em !important;
+  font-weight: 800;
 }
-
-.classifyOnClick img {
+/* Navigation grid */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem auto 0;
+  padding: 1rem 0 0.75rem 0;
   width: 100%;
+  flex-wrap: wrap;
+  border-top: 4px solid #fff;
+}
+
+
+.footer a:hover {
+  background: var(--color-primary);
+}
+
+.footer .links {
+  padding: 0.5rem 1rem 1.5rem;
+  white-space: nowrap;
+}
+
+.divider {
+  padding: 0 1rem;
+}
+
+
+body {
+  font-family: HK Grotesk;
+  background-color: var(--color-bg);
+  margin:0;
+}
+
+/* Page structure */
+.wrapper {
+  min-height: var(--wrapper-height);
+  display: grid;
+  place-items: center;
+  margin: 0 1rem;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* Instructions */
+.instructions {
+  margin: 1rem auto 0;
+}
+
+
+button,
+input {
+  font-family: inherit;
+  font-size: 100%;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  transition: 500ms;
+}
+
+/* Subheading */
+h2 {
+  color: black;
+}
+
+
+
+.container { 
+ height: 73.5vw;
+ margin: 1vw auto;
+ max-height: 500px;
+ max-width: 600px;
+ overflow: hidden;
+ width: 98vw;
+}
+.container figure { 
+ background-image: url(https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/tokio-woman.jpg?v=1659221191747);
+ background-size: cover;
+ font-size: 0;
+ height: 100%;
+ margin: 0; 
+ position: relative;
+ box-shadow: 5px 5px 10px rgb(23 19 43 / 20%);
+ width: 100%; 
+ border-radius: 20px;
+ 
+}
+#compare {
+ background-image: url(https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/tokio-1.jpeg?v=1659221191598);
+ background-size: cover;
+ bottom: 0;
+ border-radius:20px 0px 0px 20px;
+ border-right: 5px solid rgba(255,255,255,0.7);
+ box-shadow: 10px 0 15px -13px #000;
+ height: 100%;
+ max-width: 98.6%;
+ min-width: 0.6%;
+ overflow: visible;
+ position: absolute;
+ width: 50%; 
+ animation: first 2s 1 normal ease-in-out 0.1s; 
+ -webkit-animation: first 2s 1 normal ease-in-out 0.1s; 
+}
+input#slider {
+ -moz-appearance: none;
+ -webkit-appearance: none;
+ border: none; 
+ background: transparent;
+ cursor: col-resize;
+ height: 100vw;
+ left: 0;
+ margin: 0;
+ outline: none; 
+ padding: 0;
+ position: relative;
+ top: -100vw;
+ width: 100%;
+}
+input#slider::-moz-range-track { 
+ background: transparent; 
+}
+input#slider::-ms-track {
+ border: none; 
+ background-color: transparent;
+ height: 100vw; 
+ left: 0; 
+ outline: none; 
+ position: relative;
+ top: -100vw; 
+ width: 100%;
+ margin: 0;
+ padding: 0;
+ cursor: col-resize;
+ color:transparent;
+}
+input#slider::-ms-fill-lower {
+ background-color:transparent;
+}
+input#slider::-webkit-slider-thumb {
+ -webkit-appearance:none;
+ height: 100vw;
+ width: 0.5%;
+ opacity: 0;
+}
+input#slider::-moz-range-thumb {
+ -moz-appearance: none;
+ height: 100vw;
+ width: 0.5%;
+ opacity: 0;
+}   
+input#slider::-ms-thumb {
+ height: 100vw;
+ width: 0.5%; 
+ opacity:0;
+}
+input#slider::-ms-tooltip {
+ display:none;
+}
+#compare::before {
+ background: url(https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/comparision.png?v=1659251418076) no-repeat scroll 0 center transparent;
+ background-size:contain;
+ content: " ";
+ float: right;
+ height: 100%;
+ margin-right: -34px;
+ position: relative;
+ top:0;
+ width: 64px;
+}
+@keyframes first {
+  0% {width: 0%; }
+  50% {width: 80%; }
+  100% {width: 50%; }
+}
+@-webkit-keyframes first {
+  0% {width: 0%; }
+  50% {width: 80%; }
+  100% {width: 50%; }
+}
+
+.slide{
+  background-color: black;
+  color: white;
+}
+
+.slide:hover,
+.slide:focus {
+  background-color: white;
+  box-shadow: inset 6.5em 0 0 0 white;
+  cursor: pointer;
+  color: black;
+}
+
+
+
+.fill:hover,
+.fill:focus {
+  box-shadow: inset 0 0 0 2em black;
+  color: white;
+}
+
+
+
+
+
+.close:hover,
+.close:focus {
+  box-shadow: 
+    inset -15.5em 0 0 0 black,
+    inset 15.5em 0 0 0 black;  
+    color: white;
+}
+
+
+.raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em black;
+  transform: translateY(-0.25em);
+  color: white;
+  background-color: black;
+}
+
+
+.up:hover,
+.up:focus {
+  box-shadow: inset 0 -3.25em 0 0 black;
+  color: white;
+}
+
+.offset {  
+  box-shadow: 
+    0.1em 0.1em 0 0 black,
+    inset 0.1em 0.1em 0 0 black;
+}
+.offset:hover, .offset:focus {
+    box-shadow: 0 0 0 0 black,
+    inset 6em 3.5em 0 0 black;
+    color: white;
+  }
+
+.buttons > .column {
+  margin: 20px;
+}
+
+.buttons > button {
+  margin: 10px;
+}
+
+#app{
+  height: 88%;
+  width: 88%;
+  margin: auto;
+  max-width:700px;
+  border: 10px solid #111111;
+  border-radius:10px;
+  z-index: 10000;
+}
+#appwrap {
+  position: fixed;
+  padding-top:50px;
+  top:0px;
+  left:0px;
+  background: rgba(0,0,0,0.5);
+  width:100%;
+  height:100%;
+  z-index: 10000;
+  display:block;
+  text-align:center;
+}
+
+.icon-card{
+  filter: brightness(0) !important;
+  padding: 5px;
+}
+
+.fill:hover > span > img, .fill:focus > span > img  {
+  filter: grayscale(100%) invert(1) brightness(5)  !important;
+
+}
+
+
+.swiper {
+  width: 90%;
+  padding: 20px 50px;
+  height: 170px;
+  text-align: center;
+}
+
+
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: black;
+  border-radius: 5px;
+}
+ 
+
+.swiper-button-next:after,.swiper-button-prev:after{
+  filter: brightness(0) invert(1);
+  transform: scale(.45);
+}
+.swiper-pagination-bullet-active{
+  background: black;
+}
+
+.sample {
+  border-radius: 50%;
+  cursor: pointer;
 }
