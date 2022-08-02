@@ -1,53 +1,593 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Multiple object detection using pre trained model in TensorFlow.js</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Jason Mayes">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" sizes="192x192" href="https://artopen.pl/icons/icon-192-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="https://artopen.pl/icons/icon-512-512.png">
+<link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://artopen.pl/icons/icon-192-192.png"
+    />
+
+    <title>Projekt AR - Prototyp</title>
+
+      <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+  />
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <!-- Meta tags for SEO and social sharing -->
+    <link rel="canonical" href="https://glitch-hello-website.glitch.me/" />
+    <meta
+      name="description"
+      content="A simple website, built with Glitch. Remix it to get your own."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:title" content="Hello World!" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://glitch-hello-website.glitch.me/" />
+    <meta
+      property="og:description"
+      content="A simple website, built with Glitch. Remix it to get your own."
+    />
+    <meta
+      property="og:image"
+      content="https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2Fhello-website-social.png?v=1616712748147"
+    />
+    <meta name="twitter:card" content="summary" />
 
     <!-- Import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-  </head>  
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- Import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+  </head>
   <body>
-    <h1>Multiple object detection using pre trained model in TensorFlow.js</h1>
-    
-    <header class="note"> 
-      <h2>Difficulty: Easy</h2>
-    </header>
+    <div class="wrapper">
+      <div class="content" role="main">
+        <!-- This is the start of content for our page -->
+        <h1 class="title">Testowanie farb online</h1>
+        <br><sub>PROJEKT WEB AR - PROTOTYP</sub>
+        <h2 class="subtitle">Testuj farby wirtualnie – znajdź swój idealny kolor włosów!</h2>
 
-    <h2>How to use</h2>
-    <p>Please wait for the model to load before trying the demos below at which point they will become visible when ready to use.</p>
-    
-    <section id="demos" class="invisible">
-      
+        <div class="columns">
+          <div class="container column">
+            <figure>
+              <div id="compare"></div>
+            </figure>
+            <input
+              oninput="beforeAfter()"
+              onchange="beforeAfter()"
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+              id="slider"
+            />
+          </div>
+          <div class="column" style="align-items:space-between">
+            <div class="instructions" style="margin-bottom: 30px">
+              <h2 class="subtitle">Instrukcja korzystania z projektu:</h2>
+              <ul style="max-width:70%">                
+	<li><strong>Wgraj swoje zdjęcie</strong> lub skorzystaj z opcji <strong>testowania na żywo za pomocą kamery w telefonie</strong> lub komputerze.</li>
+<li>Wybierz <strong>linię</strong> oraz farbę, które chcesz przetestować.</li>                           
+	<li><strong>Testuj, przymierzaj i baw się!</strong> Sprawdź, która farba jest <strong>dla Ciebie stworzona</strong>.</li>
+               </ul>
+              
+              <br>
+              
+              <div style="display:flex;justify-content:center;margin-top:50px;">
+              
+                <button class="close" style="max-width:200px;width:200px" onclick="showModal()">Zaczynamy!</button> 
+              
+              </div>
+               
+              <br>
+              
+              <p align="center">
+                <button style="max-width:200px;width:200px" class="up" onclick="(function(){
+window.location.href='https://historical-granite-barracuda.glitch.me/#pelne-zalecenia'          
+})();">Zalecenia użytkowania</button> 
+              </p>
+              
+            </div>
 
-      <h2>Demo: Webcam continuous classification</h2>
-      <p>Hold some objects up close to your webcam to get a real-time classification! You must be on <a href="https://glitch.com/~tensorflow-js-object-detection">the https version of the website</a> for this to work. When ready click "enable webcam" below and accept access to the webcam when the browser asks (check the top left of your window)</p>
-      
-      <div id="liveView" class="videoView">
-        <button id="webcamButton">Enable Webcam</button>
-        <video id="webcam" autoplay></video>
+            
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
     
-    <footer class="note">
-      <p>
-        <em>Please note:</em> This demo loads our desired machine learning model via <a href="https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd" title="View TensorFlow.js COCO-SSD on our GitHub">an easy to use JavaScript class</a> made by the TensorFlow.js team to do the hard work for you. No machine learning knowledge is needed to use this. View the link to learn more about fine tuning this machine learning model. See our other tutorials if you want to load a model directly yourself, or recognize a custom object using your own data.
-      </p>
-      <p>
-        <a href="https://glitch.com/~tensorflow-js-object-detection">See the README.md or the project page for more information</a>.
+    
+    
+    
+    
+    <div class="container" style="padding:20px">
+    <h2 class="subtitle" id="pelne-zalecenia">
+      Zalecenia użytkowania oraz dodatkowe informacje:
+    </h2>
+      <code><b>1</b>. Zdjęcia powinny być robione na czystym tle tak aby kontur włosów nie zlewał się z tłem.
+    <br>
+        <b>2</b>. Zdjęcia powinny być odpowiednio oświetlone.
+        <br>
+        <b>3</b>. Zalecane są zdjęcia na wprost, typu selfie, zdjęcia robione z profilu mogą okazać się mniej efektywne.
+        <br>
+        <b>4</b>. Wymagane jest połączenie z internetem, zalecane jest minimum połączenie sieciowe LTE.
+        <br>
+        <b>5</b>. W zależności od wielkości i rozdzielczości wgranego zdjęcia obliczenia mogą zająć więcej czasu.
+        <br>
+        <b>6</b>. Przetwarzanie video nie jest zoptymalizowane i może wystąpić opóźnienie.
+        <br>
+        <b>7</b>. Wyniki testów farb mogą różnić się od rzeczywistych kolorów farby. Aplikacja ma jedynie charakter podglądowy.
+        <br>
+        <b>8</b>. W przypadku bardzo nieregularnych włosów aplikacja może zniekształcać ich maskę.
+    </code>
+    </div>
+    
+    <div id="appwrap" style="display:none;">
+    <div id="closer" style="text-align:end;position:fixed;top:5px;right:5px">
+        <button onclick="hideModal()" class="fill">
+          <span>
+          <img src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/times-circle-solid.svg?v=1659388731703" width="15px" />
+            </span>
+        </button>
+      </div>
+    <iframe loading="lazy" id="app" allow="microphone; camera" src="https://hair-color-test.netlify.app">    
+    </iframe>
+    </div>
+    
+    
+    
+    
+      <h1 class="title" style="text-align:center">Interfejs użytkownika</h1>
+      
+    <br>
+            <div style="text-align: center; margin-bottom: 20px">
+              <code>slider i przyciski</code>
+            </div>
+    
+      <!-- Slider main container -->
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide">
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p0001.jpg?v=1659399797731" width="100px" />
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p01_5.jpg?v=1659399904527" width="100px" />
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p00.jpg?v=1659399909980" width="100px" />
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p01.jpg?v=1659399919401" width="100px" />
+      
+    </div>
+    
+    <div class="swiper-slide">
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p02.jpg?v=1659399929034" width="100px" />
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p03.jpg?v=1659399929034" width="100px" />
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p04.jpg?v=1659282603600" width="100px" />
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p05.jpg?v=1659282606842" width="100px" />
+    </div>
+   
+    <div class="swiper-slide">
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p06.jpg?v=1659282604411" width="100px" />
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p8.jpg?v=1659282603600" width="100px" />
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p9.jpg?v=1659282603723" width="100px" />
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p10.jpg?v=1659282604239" width="100px" />
+    </div>
+    
+    <div class="swiper-slide"> 
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p11.jpg?v=1659282604130" width="100px" />
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p12.jpg?v=1659282604170" width="100px" />
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p13.jpg?v=1659282604689" width="100px" />
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p14.jpg?v=1659282604096" width="100px" />
+      <img class="sample raise" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/p1.jpg?v=1659282603600" width="100px" />     
+    </div>
+   
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev raise"></div>
+  <div class="swiper-button-next raise"></div>
+
+</div>
+    <div style="background-color:black;text-align:center;width:100%;padding:20px">
+      <a target="_blank" href="https://sklep.joanna.pl/koloryzacja-trwala-multi-cream-color-farba-platynowy-blond-32-,c52,p811,pl.html"><p class="subtitle" style="color:white;">
+        01_5 ULTRA JASNY BLOND<br>
+        <sub>MULTI EFFECT</sub>
+      </p></a>
+    </div>
+    
+    <br>
+            
+            <div style="text-align: center; margin-bottom: 20px">
+              <code>ikony interfejsu</code>
+            </div>  
+    
+            <div style="display:block;margin:0% 5%">
+  
+     <div class="buttons columns" style="justify-content:center;margin: auto;padding:0px">
+              <button class="fill"><span>
+          <img  src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/share-alt-solid.svg?v=1659386500950" width="10px" height="10px" />
+            </span></button>
+   
+       <button class="fill"><span>
+          <img  src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/share-alt-solid.svg?v=1659386500950"  width="10px" height="10px" />&nbsp;Udostępnij
+            </span></button>
+              </div>
+              
+              <div class="buttons columns" style="justify-content:center;margin: auto;padding:0px">
+                <button class="fill"><span>
+          <img  src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/download-solid.svg?v=1659395670298" width="10px" height="10px" />
+            </span></button>
+       <button class="fill"><span>
+          <img  src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/download-solid.svg?v=1659395670298" width="10px" height="10px" />&nbsp;Pobierz
+            </span></button>
+       
+       <button class="fill"><span>
+          <img  src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/cloud-download-alt-solid.svg?v=1659395670699" width="10px" height="10px" />&nbsp;Pobierz
+            </span></button>
+       <div class="buttons columns" style="justify-content:center;margin: auto;padding:0px">
+       <button style="font-size:16px;font-weight:800" class="fill"><span>
+          <img  src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/cloud-upload-alt-solid.svg?v=1659396270580" width="15px" height="15px" />&nbsp;Załaduj zdjęcie
+            </span></button>
+       
+       <button style="font-size:16px;font-weight:800" class="fill"><span>
+          <img src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/camera-retro-solid.svg?v=1659395670298" width="15px" height="15px" />&nbsp;Użyj kamery
+            </span></button>
+       
+       <button style="font-size:16px;font-weight:800" class="fill"><span>
+          <img src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/camera-solid.svg?v=1659395670298" width="15px" height="15px" />&nbsp;Użyj kamery
+            </span></button>
+                </div>
+                <div class="buttons columns" style="justify-content:center;margin: auto;padding:0px">
+       <button class="fill"><span>
+          <img src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/long-arrow-alt-left-solid.svg?v=1659395670944" width="10px" height="10px" />
+      </span></button>
+        
+       
+       <button class="fill"><span>
+          <img src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/long-arrow-alt-right-solid.svg?v=1659395670902" width="10px" height="10px" />
+      </span></button>
+       
+       
+       <button class="fill"><span>
+          <img src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/external-link-alt-solid.svg?v=1659386500949" width="10px" height="10px" />
+      </span></button>
+       
+              <button class="fill"><span>
+          <img src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/exchange-alt-solid.svg?v=1659395670563" width="12px" height="25px" />
+          </span></button>
+       
+              
+    </div>
+    </div>
+    <br>
+    <div style="text-align: center; margin-bottom: 20px">
+              <code>Dolny element interfejsu</code>
+    </div>
+              
+              <div style="display:block;">
+  
+     <div class="buttons columns" style="justify-content:center;margin: auto;border:1px solid black;border-radius:5px;width:237px;padding:0px">
+              <button class="fill" style="border: 0px solid white;margin:0px"><span>
+          <img  src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/swatchbook-solid.svg?v=1659407261490" width="25px" height="25px" />
+            </span></button>
+       <button class="fill" style="border: 0px solid white;margin:0px"><span>
+          <img src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/cloud-upload-alt-solid.svg?v=1659396270580" width="32px" height="25px" />
+            </span></button>
+       <button class="fill" style="border: 0px solid white;margin:0px"><span>
+          <img src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/camera-retro-solid.svg?v=1659395670298" width="25px" height="25px" />
+            </span></button>
+       <button class="fill" style="border: 0px solid white;margin:0px"><span>
+          <img src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/exchange-alt-solid.svg?v=1659395670563" width="25px" height="25px" />
+            </span></button>
+       
+              
+    </div>
+    </div>
+       
+              
+              
+              
+              
+    <br>
+    <div style="text-align: center; margin-bottom: 20px">
+              <code>ikony społecznościowe</code>
+            </div>
+<div style="display:block;">
+  
+     <div class="buttons columns" style="justify-content:center;margin: auto;border:1px solid black;border-radius:5px;width:140px;padding:0px">
+              <button class="fill" style="border: 0px solid white;margin:0px"><span>
+          <img  src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/facebook-brands.svg?v=1659389400937" width="15px" height="25px" />
+            </span></button>
+       <button class="fill" style="border: 0px solid white;margin:0px"><span>
+          <img src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/twitter-brands.svg?v=1659389400937" width="15px" height="25px" />
+            </span></button>
+       <button class="fill" style="border: 0px solid white;margin:0px"><span>
+          <img src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/linkedin-brands.svg?v=1659389400937" width="12px" height="25px" />
+            </span></button>
+       
+              
+    </div>
+    </div>
+       
+    <br>
+        
+            <div style="text-align: center; margin-bottom: 20px">
+              <code>animacje css</code>
+            </div>
+            <div class="buttons columns">
+              <button class="column fill">fill</button>
+              <button class="column raise">raise</button>
+              <button class="column close">close</button>
+            </div>
+            <div class="buttons columns">
+              <button class="column up">up</button>
+              <button class="column slide">slide</button>
+              <button class="column offset">offset</button>
+            </div>
+      </div>
+        
+              
+               
+    
+    
+    
+    
+    
+    <div style="width:100%;padding:0% 5%">
+          <br>
+          <h2 class="title">Często zadawane pytania</h2>
+      <h3 class="subtitle">
+        Instrukcje dla użytkowników, odpowiedzi na pytania z formularza feedbacku.
+      </h3>
+<br>
+          <div class="card">
+    <header class="card-header" onclick="showCard(0)">
+      <p class="card-header-title">Jak korzystać z aplikacji?</p>
+      <button class="card-header-icon fill" aria-label="more options">
+        <span class="icon">
+          <img loading="lazy" class="icon-card" style="transform: rotate(270deg)" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/angle-right.svg?v=1659384191952" alt="strzałka wskazująca górę">
+        </span>
+      </button>
+    </header>
+    <div class="card-content" style="display: block">
+      <div class="content">
+        <p>
+         Lorem ipsum...
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <header class="card-header" onclick="showCard(1)">
+      <p class="card-header-title">Jak poprawnie wgrać zdjęcie?</p>
+      <button class="card-header-icon fill" aria-label="more options">
+        <span class="icon">
+          <img loading="lazy" class="icon-card" style="transform: rotate(90deg)" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/angle-right.svg?v=1659384191952" alt="strzałka wskazująca dół">
+        </span>
+      </button>
+    </header>
+    <div class="card-content" style="display: none">
+      <div class="content">
+        <p>
+          Lorem ipsum...
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <header class="card-header" onclick="showCard(2)">
+      <p class="card-header-title">Jak skorzystać z kamery?</p>
+      <button class="card-header-icon fill" aria-label="more options">
+        <span class="icon">
+          <img loading="lazy" class="icon-card" style="transform: rotate(90deg)" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/angle-right.svg?v=1659384191952" alt="strzałka wskazująca dół">
+        </span>
+      </button>
+    </header>
+    <div class="card-content" style="display: none">
+      <div class="content">
+        <p>
+          Lorem ipsum...
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <header class="card-header" onclick="showCard(3)">
+      <p class="card-header-title">Jak zmienić kolor farby?</p>
+      <button class="card-header-icon fill" aria-label="more options">
+        <span class="icon">
+          <img loading="lazy" class="icon-card" style="transform: rotate(90deg)" src="https://cdn.glitch.global/6fb0f02a-17ba-46b1-bf76-3f17c3283b2f/angle-right.svg?v=1659384191952" alt="strzałka wskazująca dół">
+        </span>
+      </button>
+    </header>
+    <div class="card-content" style="display: none">
+      <div class="content">
+        <p>
+          Lorem ipsum...
+        </p>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+    
+    
+    
+    
+    
+  <br>
+  <br>
+  <br>
+  <br>
+    
+    
+    
+    
+    <h1 class="title">
+      Feedback
+    </h1>
+    <h2 class="subtitle" style="margin-left:5%">
+      Zbieranie opinii użytkowników w celu optymalizacji aplikacji.
+    </h2>
+    
+    <form style="margin:0% 5%;">
+       <h2 class="subtitle" style="text-align:center">Masz pytania? Może chciałbyś zasugerować zmianę albo błąd?
+         <br>
+        <sub>Skontaktuj się z nami.</sub>
+      </h2>
+    <label class="label">Zadaj pytanie:</label>
+    <div style="display:flex;flex-wrap:wrap;" class="columns">
+      <input class="input column is-dark" style="margin:10px" type="text" placeholder="imię">
+      <input class="input column is-dark" style="margin:10px" type="mail" placeholder="email">
+    </div>
+      <textarea class="textarea is-dark" placeholder="twoja wiadomość"></textarea>
+      <br>
+      <div style="text-align:center">
+         <button class="is-dark close" type="submit">
+        Wyślij
+      </button>
+      </div>
+    
+     </form>
+    
+    <div class="wrapper" style="padding:20px;">
+    
+    <code>
+      <h2 class="subtitle">
+      Lista i status prac:
+      </h2>
+      <b>WYKONANE</b> <br>
+      1. Zebranie odpowiednich materiałów oraz technologii.<br>
+      2. Konfiguracja lokalnych serwerów testowych.<br>
+      3. Wprowadzenie serwerów testowych online oraz prototypu.<br>
+      4. Wprowadzenie funkcji aplikacji - przetwarzanie obrazów statycznych oraz video.<br>
+      5. Opracowanie interfejsów aplikacji.<br>
+      6. Opracowanie implementacji aplikacji.<br>
+      7. Opracowanie struktury landinga.<br>
+      7. Wprowadzenie systemu kontroli wersji GIT oraz utworzenie repozytorium GitHub.<br>
+      ----------------------
+      <br>
+      <b>DO ZROBIENIA</b><br>
+      1. Optymalizacja funkcji do przetwarzania video. <sup>*</sup><br>
+      2. Wgranie z próbek do programu.<br>
+      3. Funkcja do zapisu plików.<br>
+      4. Implementacja interfejsów aplikacji.<br>
+      5. Funkcja do udostępniania w SM.<br>
+      6. Implementacja slidera PRZED / PO.<br>
+      7. Wprowadzenie danych JSON.<br>
+      8. Wprowadzenie treści tekstowych / grafik.<br>
+      9. Optymalizacja serwera B pod kątem potrzebnej pamięci. <sup>*</sup><br>
+      10. Optymalizacja funkcji pod kątem UX - Timing / Loading.<br>
+      11. Implementacja LP oraz podpięcie formularza.<br>
+      12. Fine-tuning, korekty, finalne testy.<br>
+      ------------------
+      <sup>*</sup>- najtrudniejsze / najbardziej problematyczne zadania
+    </code>
+    </div>
+            
+    
+    <br>
+    
+    <footer class="footer" style="max-width:100%;padding:0% 5%;">
+      <div class="links">
+       <h2 class="title">
+         Research
+        </h2> 
+      <h2 class="subtitle">
+        Bibliografia<br>
+        <sub>Projekt opiera się głównie na technologiach open source.</sub>
+        <br>
+        <sub>Dodatkowe koszty serwerów mogą wystąpić podczas używania projektu w dużej mierze.</sub>
+        </h2>
+        
+      <ul style="list-style:inside">
+        
+        <li>Zdjęcia: <a target="_blank" href="https://unsplash.com/photos/1f7WL1qrrdE?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">https://unsplash.com</a></li>
+        <li>Ikony interfejsu: <a target="_blank" href="https://fontawesome.com/v5/search">https://fontawesome.com/v5/search</a></li>
+        <li>Wykorzystany model segmentacji twarzy (dane): <a target="_blank" href="https://github.com/switchablenorms/CelebAMask-HQ">https://github.com/switchablenorms/CelebAMask-HQ</a></li>
+        
+        <p>
+          <b>Do dalszych prac nad optymalizacją video:</b>
+        </p>
+        <li><a target="_blank" href="https://stackoverflow.com/questions/32699721/javascript-extract-video-frames-reliably">https://stackoverflow.com/questions/32699721/javascript-extract-video-frames-reliably</a></li>
+        <li><a target="_blank" href="https://google.github.io/mediapipe/getting_started/javascript">https://google.github.io/mediapipe/getting_started/javascript</a></li>
+        <li><a target="_blank" href="https://docs.opencv.org/3.4/df/d6c/tutorial_js_face_detection_camera.html">https://docs.opencv.org/3.4/df/d6c/tutorial_js_face_detection_camera.html</a></li>
+        
+        <li>Model detekcji włosów w czasie rzeczywistym opracowany przez naukowców Googla (nie dostępny dla web - tylko mobile):<br>
+            <b><a href="https://sites.google.com/view/perception-cv4arvr/hair-segmentation" target="_blank">https://sites.google.com/view/perception-cv4arvr/hair-segmentation</a></b><br>
+            <a href="https://drive.google.com/file/d/1lPwJ8BD_-3UUor4LayQ0xpa_RIC_hoRh/preview" target="_blank">https://drive.google.com/file/d/1lPwJ8BD_-3UUor4LayQ0xpa_RIC_hoRh/preview</a><br>
+            <a href="https://drive.google.com/file/d/1C8WYlWdDRNtU1_pYBvkkG5Z5wqYqf0yj/view" target="_blank">https://drive.google.com/file/d/1C8WYlWdDRNtU1_pYBvkkG5Z5wqYqf0yj/view</a><br>
+            <a href="https://drive.google.com/file/d/1hFrB2SlIekwiGAfvwqwZt9KFcU6h01Ue/view" target="_blank">https://drive.google.com/file/d/1hFrB2SlIekwiGAfvwqwZt9KFcU6h01Ue/view</a><br>
+        </li>
+        
+        <li>Implementacja konkurencji: <a target="_blank" href="https://lorealparis.pl/excellence/creme/trwala-koloryzacja-10-21-jasny-perlowy-blond/?tryon=true">https://lorealparis.pl/excellence/creme/trwala-koloryzacja-10-21-jasny-perlowy-blond/?tryon=true</a><br>
+        </li>
+        
+        </ul>
+        <br><br><br>
+        <h2 class="subtitle">
+        Specyfikacja technologiczna:
+        </h2>
+        <ul>
+          <p>
+            Architektura aplikacji:
+          </p>
+          <br>
+          <li><b>Serwer A przetwarzający obliczenia oraz obrazy - <a href="https://nodejs.org/en/about/">node.js</a> / <a href="https://glitch.com/about">glitch.com</a></b>
+            <br>
+            Wymagania - serwer backendowy dla node.js<br> cały czas aktywny oraz z dużą pamięcią obliczeniową <br> problematyczne w obsłudze video - RAM / CPU - do diagnozy:
+            <ul style="list-style:inside">
+              <li>"@tensorflow/tfjs-node": "^2.0.1"</li>
+              <li>"axios": "^0.19.2"</li>
+              <li>"cors": "^2.8.5"</li>
+              <li>"express": "^4.17.1"</li>
+              <li>"multer": "^1.4.2"</li>
+            </ul>
+            
+          </li>
+          <br>
+          <li><b>Serwer B obsługujący interfejs użytkownika oraz wywołujący funkcje i renderujący efekt - <a href="https://reactjs.org/">react.js</a> / <a href="https://www.netlify.com">netlify.com</a></b><br>
+            Wymagania (po zbudowaniu może wylądować na serwerze klienta):
+            <ul style="list-style:inside">
+              <li>"axios": "^0.19.2"</li>
+              <li>"bootstrap": "^4.5.0",</li>
+              <li>"jquery": "^3.5.1",</li>
+              <li>"react": "^16.13.1",</li>
+              <li>"react-dom": "^16.13.1",</li>
+              <li>"react-router-dom": "^5.2.0",</li>
+              <li>"react-scripts": "3.4.1"</li>
+              <li><code>/*global cv*/</code></li>
+              <p>
+                dodatkowo do implementacji:
+              </p>
+              <li>Swiper.js - react</li>
+            </ul>
+            
+          </li><br><br>
+          <p>
+            Dodatkowe prace:<br>
+            <b>Kod do implementacji w docelowym serwisie - html / css / js.</b>
+            <br>Implementacja w serwisie klienta poprzez element <code>iframe</code>.<br>
+            Możliwość implementacji jako aplikacji na androida w technologi <code>webview</code>.<br>
+            Optymalizacja struktury landinga, danych meta, dodanie <code>danych strukturalnych JSON pod SEO</code>.
+          </p>
+        </ul>
+      </div>
+    </footer>
+    <footer style="padding:50px 20px;text-align:center">
+    <p>
+      <a class="button fill" href="https://artopen.pl">Projekt i wykonanie:&nbsp;<strong>Art Open</strong></a>
       </p>
     </footer>
-    
-    <!-- Import TensorFlow.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js" type="text/javascript"></script>
-    
-    <!-- Load the coco-ssd model to use to recognize things in images -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
-    
-    <!-- Import the page's JavaScript to do some stuff -->
-    <script src="/script.js"></script>
   </body>
 </html>
